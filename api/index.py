@@ -3,9 +3,9 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlmodel import Field, SQLModel, Session, create_engine, select
 from typing import Optional, List
 import uuid
-
+import os
 # Replace this with your noenDB connection string if needed.
-DATABASE_URL = "sqlite:///database.db"
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///db.sqlite")
 engine = create_engine(DATABASE_URL, echo=True)
 
 # Define the APIKey model.
